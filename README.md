@@ -59,32 +59,34 @@ Automated browsing with Splinter was used to access the Mars Temperature data.  
 
 3. What are the coldest and the warmest months on Mars (at the location of Curiosity)?
 
-![Alt text](/Resources/MarsTemp.png "Average Min Temperature on Mars by Month")
-![Alt text](/Resources/MarsTempSort.png "Average Min Temperature on Mars by Month Sorted")
+![Alt text](/Resources/MarsTemp.jpg "Average Min Temperature on Mars by Month")
+![Alt text](/Resources/MarsTempSort.jpg "Average Min Temperature on Mars by Month Sorted")
     
         The coldest month is 3 with an average temperature of -83.31 degrees Celsius.
         The warmest month is 8 with an average temperature of -68.38 degrees Celsius.
           
 4. Which months have the lowest and the highest atmospheric pressure on Mars?
  
-![Alt text](/Resources/MarsPressure.png "Average Atmospheric Pressure on Mars by Month")
-![Alt text](/Resources/MarsPressureSort.png "Average Atmospheric Pressure on Mars by Month")
+![Alt text](/Resources/MarsPressure.jpg "Average Atmospheric Pressure on Mars by Month")
+![Alt text](/Resources/MarsPressureSort.jpg "Average Atmospheric Pressure on Mars by Month")
     
         The month with the lowest average atmospheric pressure is 6 with an average pressure of 745.05.
         The month with the highest average atmospheric pressure is 9 with an average pressure of 913.31.
  
 5. About how many terrestrial (Earth) days exist in a Martian year?
- Estimate using the temperature cycle.  Visually estimate the distance from peak to peak.  
- ![Alt text](/Resources/MYear_byTemp.png "Terrestrial Days per Martian Year by Temperature Cycle")
+
+ 5a. Estimate using the temperature cycle.  Visually estimate the distance from peak to peak.  
+ ![Alt text](/Resources/MYear_byTemp.jpg "Terrestrial Days per Martian Year by Temperature Cycle")
         The distance from peak to peak is roughly 1475-800, or 675 days. A year on Mars appears to be about 675 days from the plot. 
 
- Evaluate using the solar longitude (ls) cycle.  The solar longitude cycles from 0 to 359 in one Martian year.
+ 5b. Evaluate using the solar longitude (ls) cycle.  The solar longitude cycles from 0 to 359 in one Martian year. Determine first and last terrestrial days of the Martian year from the chart and using code.
 ![Alt text](/Resources/MYear_EDay_First.png "First Day of Martian Year")
 ![Alt text](/Resources/MYear_EDay_Last.png "Last Day of Martian Year")
 
         The first terrestrial_date of Curiosity's first full year on Mars is 2013-08-01.
         The last terrestrial_date of Curiosity's first full year on Mars is 2015-06-18.
         Total number of terrestrial days in a Martian year is 687 days.
+
  
 **Note:**  Internet search confirms that a Mars year is equivalent to 687 Earth days.   
  <a href = "https://mars.nasa.gov/resources/21392/mars-in-a-minute-how-long-is-a-year-on-mars/#:~:text=The%20Earth%20zips%20around%20the,days%20%2D%20or%20one%20Mars%20year.">How Long is a Year on Mars?</a>
