@@ -1,25 +1,28 @@
 #  <span style="color:tan"> **Module 12 Web Scraping Challenge**  </span>
 ### Chris Gruenhagen 27Dec2022
-**Homework Log**
+## **Homework Log**
 
-The xxx homework is located in the xx directory in the xx repository.  The xx homework consists of a jupyter notebook "xx" and output files located in the "output_data" directory (xx.csv file and xx png files).
+The Module 12 Challenge homework is located in the BeautifulSoup-challenge repository.  
+
+Mars News (Deliverable 1) consists of:
+* jupyter notebook "part_1_mars_news.ipynb",
+* json file "marsjson.json" -- screenshot provided as "MarsArticles_JSON.png",
+* MongoDB "MarsMod12" -- screenshot provided as "MarsArticles_MongoDB.png" 
+
+Mars Weather (Deliverable 2) consists of:
+* jupyter notebook "part_2_mars_weather.ipynb",
+* csv file "MarsWeather.csv"
 
 ---
-### **Purpose**
+## **Purpose**
 
 The purpose of this homework was to:
-1. Scrape the titles and preview text from Mars news articles from the https://redplanetscience.com/ website.  Store data in a JSON file and a MongoDB database.
-2. Scrape and analyze Mars weather data from an html table on the https://data-class-mars-challenge.s3.amazonaws.com/Mars/index.html site.
+1. Scrape the titles and preview text from Mars news articles from the 
+<a href = "https://redplanetscience.com/" target = "_blank"> Red Planet Science </a> website and store the data in a JSON file and a MongoDB database.
+2. Scrape and analyze Mars weather data from an html table on the 
+<a href = "https://data-class-mars-challenge.s3.amazonaws.com/Mars/index.html" target = "_blank"> Mars Data Table </a> page.
 
-### **Study Format**
-
-In this study, data on a single day (Nov 6, 2022) from over 500 random cities of varying distances from the equator were evaluated to visualize the potential relationships between latitude and temperature, humidity, cloudiness, and wind speed in both the Northern and Southern hemispheres. Data was obtained from OpenWeather https://openweathermap.org/.
-
-Limitations:  This dataset was generated on a single day so it does not capture day to day variation, and it relies on data from cities which are generally located in more liveable locations by latitude.  Comparisons between the northern and southern hemispheres may be impacted by differences in the number of cities (northern = 393, southern = 168) and ranges of latitude evaluated (northern 0 to 77, southern 0 to -55).
-
-Exclusions: At the beginning of the study, 611 random cities were selected from the citipy library. While pulling additional weather data from OpenWeather, 50 cities were excluded due to errors in data processing, leaving a dataset of 561 cities for analysis.
-
-### **Attribution**
+## **Attribution**
 ‘Mars news articles provided by’
 https://redplanetscience.com/
 
@@ -27,61 +30,65 @@ https://redplanetscience.com/
 https://data-class-mars-challenge.s3.amazonaws.com/Mars/index.html
 
 
-### Conclusions
+## **Deliverables**
+### *Deliverable 1:  Scrape Titles and Preview Text from Mars News (40 pts)*
 
-What is the weather like as we approach the equator?
+Automated browsing with Splinter was used to visit the Mars news site and the HTML code was extracted with Beautiful Soup. The article titles and preview text were scraped, extracted and stored in a list of dictionaries. The data was then saved in both JSON and MongoDB formats.
 
-Based on the data collected on 561 random cities on November 6, 2022 from OpenWeather https://openweathermap.org/, temperature increases and wind speed appears to decrease as we approach the equator.  Humidity and cloudiness did not appear to be correlated with latitude.
 
-### **Analysis**
-### *Requirement 1:  Create Plots to showcase the relationship between weather variables and latitude across the globe.*
+Mars News data - JSON format 
+![Alt text](Resources/MarsArticles_JSON.png "Mars News data - JSON format")
 
-Worldwide Latitude vs Temperature
-![Alt text](/WeatherPy_VacationPy/output_data/Fig1.png "Latitude vs Temp")
+Mars News data - screenshot of MongoDB
+![Alt text](Resources/MarsArticles_MongoDB.png "Mars News data - MongoDB")
 
-Worldwide Latitude vs Humidity
-![Alt text](/WeatherPy_VacationPy/output_data/Fig2.png "Latitude vs Humidity")
-
-Worldwide Latitude vs Cloudiness
-![Alt text](/WeatherPy_VacationPy/output_data/Fig3.png "Latitude vs Cloudiness")
-
-Worldwide Latitude vs Wind Speed
-
-![Alt text](/WeatherPy_VacationPy/output_data/Fig4.png "Latitude vs Wind Speed")
 ---
-### *Requirement 2: Compute Linear Regression for Each Relationship in the Northern and Southern Hemispheres.*
+### *Deliverable 2: Scrape and Analyze Mars Weather Data (60 pts)*
 
-Latitude vs Temperature in the Northern and Southern Hemispheres
-![Alt text](/WeatherPy_VacationPy/output_data/North_Lat_vs_Max%20Temp.png "Northern Latitude vs Humidity")
-![Alt text](/WeatherPy_VacationPy/output_data/South_Lat_vs_Max%20Temp.png "Southern Latitude vs Humidity")
+Automated browsing with Splinter was used to access the Mars Temperature data.  Beautiful Soup was used to extract the data from the HTML table. The data was stored in a Pandas DataFrame and saved in csv format. The data was analyzed to answer questions about Martian temperature, pressure and the Martian calendar.    
 
-        **Discussion about the linear relationship:**
-         In the northern hemisphere, there is a very strong negative correlation (r = -0.84) between latitude and max temperature.  In the southern hemisphere, there is a moderate correlation (r = 0.53) between latitude and max temperature.  In both hemispheres, the max temperature increases as you approach the equator (latitude = 0). 
-         
-         The northern latitude appears to have a greater temperature difference (-33C to 33C) than the southern latitude (9C to 33C), but the city locations in the northern latitudes also span a much greater range of latitudes (lat 0 to 77) than the cities in the southern latitudes (lat 0 to -55). Additional data and/or analysis would be required to evaluate differences between the two hemispheres.
-         
+#### *Data Analysis*
 
+1. How many months exist on Mars?
 
-Latitude vs Humidity in the Northern and Southern Hemispheres
-![Alt text](/WeatherPy_VacationPy/output_data/North_Lat_vs_Humidity.png "Northern Hemisphere Latitude vs Humidity") 
-![Alt text](/WeatherPy_VacationPy/output_data/South_Lat_vs_Humidity.png "Southern Hemisphere Latitude vs Humidity")
+    There are 12 months on Mars.
 
-        **Discussion about the linear relationship:** 
-        In the northern hemisphere, there is a very weak to weak correlation (r = 0.24) between latitude and humidity. In the southern hemisphere, there is a weak correlation (r =0.32) between latitude and humidity.  Humidity varies widely across latitudes in both hemispheres, from 13 to 100%. 
+2. How many Martian (and not Earth) days worth of data exist in the scraped dataset?
 
-Latitude vs Cloudiness in the Northern and Southern Hemispheres
-![Alt text](/WeatherPy_VacationPy/output_data/North_Lat_vs_Cloudiness.png "Northern Hemisphere Latitude vs Cloudiness") 
-![Alt text](/WeatherPy_VacationPy/output_data/South_Lat_vs_Cloudiness.png "Southern Hemisphere Latitude vs Cloudiness")
+    There are 1867 Martian days' worth of data. 
 
-        **Discussion about the linear relationship:** 
-        In both the northern and southern hemispheres, there is a weak correlation (r = 0.28, r = 0.33) between latitude and cloudiness. Cloudiness varies widely across latitudes in both hemispheres, from 0 to 100%.
+3. What are the coldest and the warmest months on Mars (at the location of Curiosity)?
 
-Latitude vs Wind Speed in the Northern and Southern Hemispheres
-![Alt text](/WeatherPy_VacationPy/output_data/North_Lat_vs_Wind%20Speed.png "Northern Hemisphere Latitude vs Wind Speed") 
-![Alt text](/WeatherPy_VacationPy/output_data/South_Lat_vs_Wind%20Speed.png "Southern Hemisphere Latitude vs Wind Speed")
+![Alt text](/Resources/MarsTemp.png "Average Min Temperature on Mars by Month")
+![Alt text](/Resources/MarsTempSort.png "Average Min Temperature on Mars by Month Sorted")
+    
+        The coldest month is 3 with an average temperature of -83.31 degrees Celsius.
+        The warmest month is 8 with an average temperature of -68.38 degrees Celsius.
+          
+4. Which months have the lowest and the highest atmospheric pressure on Mars?
+ 
+![Alt text](/Resources/MarsPressure.png "Average Atmospheric Pressure on Mars by Month")
+![Alt text](/Resources/MarsPressureSort.png "Average Atmospheric Pressure on Mars by Month")
+    
+        The month with the lowest average atmospheric pressure is 6 with an average pressure of 745.05.
+        The month with the highest average atmospheric pressure is 9 with an average pressure of 913.31.
+ 
+5. About how many terrestrial (Earth) days exist in a Martian year?
+ Estimate using the temperature cycle.  Visually estimate the distance from peak to peak.  
+ ![Alt text](/Resources/MYear_byTemp.png "Terrestrial Days per Martian Year by Temperature Cycle")
+        The distance from peak to peak is roughly 1475-800, or 675 days. A year on Mars appears to be about 675 days from the plot. 
 
-        **Discussion about the linear relationship:** 
-        In the northern hemisphere, there is a very weak to weak correlation (r = 0.22) between latitude and wind speed. In the southern hemisphere, there is a weak negative correlation (r = - 0.29) between latitude and wind speed.  Although wind speed varies widely across latitudes in both hemispheres (0-14 m/s), the average wind speed in both hemispheres appear to decrease as you approach the equator (latitude = 0).
+ Evaluate using the solar longitude (ls) cycle.  The solar longitude cycles from 0 to 359 in one Martian year.
+![Alt text](/Resources/MYear_EDay_First.png "First Day of Martian Year")
+![Alt text](/Resources/MYear_EDay_Last.png "Last Day of Martian Year")
+
+        The first terrestrial_date of Curiosity's first full year on Mars is 2013-08-01.
+        The last terrestrial_date of Curiosity's first full year on Mars is 2015-06-18.
+        Total number of terrestrial days in a Martian year is 687 days.
+ 
+**Note:**  Internet search confirms that a Mars year is equivalent to 687 Earth days.   
+ <a href = "https://mars.nasa.gov/resources/21392/mars-in-a-minute-how-long-is-a-year-on-mars/#:~:text=The%20Earth%20zips%20around%20the,days%20%2D%20or%20one%20Mars%20year.">How Long is a Year on Mars?</a>
+ 
 ---
 
 # &#x1F469;&#x200D;&#x1F680; &#x1F680; &#x1f311; &#x1F47D; &#x1F6F8; &#x1F30E; &#x1F6F8; &#x1F47D; &#x1f311;&#x1F680; &#x1F469;&#x200D;&#x1F680;
